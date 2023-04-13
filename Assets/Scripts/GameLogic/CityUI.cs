@@ -24,7 +24,7 @@ public class CityUI : MonoBehaviour
         Global.cityWealth = Global.farms * 2000 + Global.markets * 6000;
         Global.cityFood = Global.farms * 160 + Global.markets * 80;
         Global.cityHappiness = Global.academies * 0.4f + Global.armories * -0.1f + Global.factories * -0.1f + Global.farms * 0.3f + Global.markets * 0.3f + Global.mines * -0.2f;
-        Global.money = Global.armories * 10 + Global.factories * 30 + Global.farms * 10 + Global.markets * 10 + Global.mines * 30;
+        //Global.money = Global.armories * 10 + Global.factories * 30 + Global.farms * 10 + Global.markets * 10 + Global.mines * 30;
         // TO DO: decrease food proportionate to population somehow
         // number of troops lost after being used in battle will be updated somewhere else
         Global.troops = Global.armories * 8;

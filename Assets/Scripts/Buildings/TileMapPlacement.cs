@@ -34,6 +34,7 @@ public class TileMapPlacement : MonoBehaviour
     {
         mainCamera = Camera.main;
         mainCamera.transform.LookAt(Vector3.zero);
+        Global.money = 200;
     }
 
     private void Update()
