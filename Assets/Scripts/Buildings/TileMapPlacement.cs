@@ -132,6 +132,7 @@ public class TileMapPlacement : MonoBehaviour
                         placedPositions.Add(cellPosition);
                         Global.factories += 1;
                         Global.money -= cost;
+                        Global.moneyPerTurn += 10;
                     }
                     else if (selection == 4)
                     {

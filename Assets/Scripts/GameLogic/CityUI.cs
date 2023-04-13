@@ -38,4 +38,8 @@ public class CityUI : MonoBehaviour
         troopsText.text = string.Format("Player Troops: {0}", Global.troops);
 
     }
+
+    public void OnEndTurn(){
+        Global.money += Global.moneyPerTurn;
+    }
 }
