@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyMeleeBasic : MeleeBasic
 {
 
-    public EnemyMeleeBasic(int healthToSet, int dmg, int armorToSet, bool isShielded, int chargeBonusToSet, float magicResistPerc, GameObject troopToSet, float moveSpeed)
-    : base(healthToSet, dmg, armorToSet, isShielded, chargeBonusToSet, magicResistPerc, troopToSet, moveSpeed)
+    public EnemyMeleeBasic(int healthToSet, int dmg, int armorToSet, bool isShielded, int chargeBonusToSet, float magicResistPerc, GameObject troopToSet, float moveSpeed, bool magicDamage, float attackDistanceToSet)
+    : base(healthToSet, dmg, armorToSet, isShielded, chargeBonusToSet, magicResistPerc, troopToSet, moveSpeed, magicDamage, attackDistanceToSet)
     {
         health = healthToSet;
         attackDamage = dmg;
@@ -16,6 +16,7 @@ public class EnemyMeleeBasic : MeleeBasic
         magicResistPercent = magicResistPerc;
         troopObject = troopToSet;
         movementSpeed = moveSpeed;
+        attackDistance = attackDistanceToSet;
     }
 
     void FindPlayerToAttack()
@@ -67,9 +68,20 @@ public class EnemyMeleeBasic : MeleeBasic
     {
         if(attackingUnit != null)
         {
+
             if (attackingUnit.isAlive == true)
             {
                 agent.SetDestination(attackingUnit.troopObject.transform.position);
+
+                //Once reached point of moveToPoint
+                float distanceToEnemy = Vector3.Distance(troopObject.transform.position, attackingUnit.troopObject.transform.position);
+                Debug.Log(attackDistance);
+                if (distanceToEnemy <= attackDistance)
+                {
+
+                    //This might call a bunch but once we get in the script we instantly check to see 
+                    AttackUnit(attackingUnit);
+                }
 
             }
             else

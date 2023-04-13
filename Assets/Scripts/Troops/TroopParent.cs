@@ -22,6 +22,7 @@ public class TroopParent : MonoBehaviour
     public float magicResistPercent;
     public float movementSpeed;
     public float attackDistance = 5.0f;
+    public bool dealsMagicDamage = false;
 
     public bool isAlive = true;
     public bool isEnemy = false;
@@ -49,9 +50,10 @@ public class TroopParent : MonoBehaviour
         magicResistPercent = 0f;
         isAlive = true;
         movementSpeed = 3.5f;
+        attackDistance = 5.0f;
     }
 
-    public TroopParent(int healthToSet, int dmg, int armorToSet, bool isShielded, int chargeBonusToSet, float magicResistPerc, GameObject troopToSet, float moveSpeed)
+    public TroopParent(int healthToSet, int dmg, int armorToSet, bool isShielded, int chargeBonusToSet, float magicResistPerc, GameObject troopToSet, float moveSpeed, bool magicDamage, float attackDistanceToSet)
     {
         health = healthToSet;
         attackDamage = dmg;
@@ -61,25 +63,27 @@ public class TroopParent : MonoBehaviour
         magicResistPercent = magicResistPerc;
         troopObject = troopToSet;
         movementSpeed = moveSpeed;
+        dealsMagicDamage = magicDamage;
+        attackDistance = attackDistanceToSet;
 
     }
 
     
 
-    void AttackUnit(TroopParent unitToAttack)
+    public void AttackUnit(TroopParent unitToAttack)
     {
-        agent.SetDestination(unitToAttack.troopObject.transform.position);
 
-
-        //Once reached point of moveToPoint
-        attackingUnit = unitToAttack;
-        float distanceToEnemy = Vector3.Distance(troopObject.transform.position, unitToAttack.troopObject.transform.position);
-        if(distanceToEnemy <= attackDistance)
+        if(isAttackingCurrently == false)
         {
-            isAttackingCurrently = true;
-            StartCoroutine(damageEnemy());
+            //Once reached point of moveToPoint
+            attackingUnit = unitToAttack;
+            float distanceToEnemy = Vector3.Distance(troopObject.transform.position, unitToAttack.troopObject.transform.position);
+            if (distanceToEnemy <= attackDistance)
+            {
+                isAttackingCurrently = true;
+                StartCoroutine(damageEnemy());
+            }
         }
-        
 
     }
 
@@ -88,13 +92,24 @@ public class TroopParent : MonoBehaviour
 
         while(isAttackingCurrently)
         {
-            attackingUnit.health -= attackDamage;
+ 
+
+            if(dealsMagicDamage == true)
+            {
+                attackingUnit.health -= attackDamage * Mathf.RoundToInt((1f - ((float)attackingUnit.magicResistPercent / 100f)));
+            }
+            else
+            {
+                attackingUnit.health -= attackDamage * (attackingUnit.armor / 100);
+                Debug.Log(attackingUnit.health);
+            }
 
             yield return new WaitForSeconds(attackSpeed);
 
             float distanceToEnemy = Vector3.Distance(troopObject.transform.position, attackingUnit.troopObject.transform.position);
             if (attackingUnit.isAlive == false || distanceToEnemy > attackDistance)
             {
+                isAttackingCurrently = false;
                 break;
             }
         }

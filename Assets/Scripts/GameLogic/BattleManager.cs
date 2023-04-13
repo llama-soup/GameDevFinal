@@ -9,6 +9,20 @@ public class BattleManager : MonoBehaviour
     public List<TroopParent> enemyTroops = new List<TroopParent>();
 
 
+
+
+
+    void allFriendlyTroopsDead()
+    {
+
+    }
+
+    void allEnemyTroopsDead()
+    {
+
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
