@@ -15,6 +15,15 @@ public class TileMapPlacement : MonoBehaviour
     public GameObject transparentObject; // Add a reference to the transparent object here
     public int selection = 1;
 
+    public int academy_cost = 100;
+    public int armory_cost = 200;
+    public int factory_cost = 150;
+    public int farm_cost = 100;
+    public int market_cost = 100;
+    public int mine_cost = 100;
+
+    public int cost = 100;
+
     private Camera mainCamera;
     private GameObject currentObject;
     private float rotationAngle = 0f;
@@ -74,63 +83,75 @@ public class TileMapPlacement : MonoBehaviour
 
             if(Input.GetKeyDown("1")){
                 selection = 1;
+                cost = academy_cost;
             }
             if(Input.GetKeyDown("2")){
                 selection = 2;
+                cost = armory_cost;
             }
             if(Input.GetKeyDown("3")){
                 selection = 3;
+                cost = factory_cost;
             }
             if(Input.GetKeyDown("4")){
                 selection = 4;
+                cost = farm_cost;
             }
             if(Input.GetKeyDown("5")){
                 selection = 5;
+                cost = market_cost;
             }
             if(Input.GetKeyDown("6")){
                 selection = 6;
+                cost = mine_cost;
             }
 
             if (Input.GetMouseButtonDown(0))
             {
                 // Check if there is already an object placed on the tilemap at the current position
-                if (!placedPositions.Contains(cellPosition))
+                if (!placedPositions.Contains(cellPosition) && cost <= Global.money)
                 {
                     if (selection == 1)
                     {
                         Instantiate(academy, centerPosition, academy.transform.rotation);
                         placedPositions.Add(cellPosition);
                         Global.academies += 1;
+                        Global.money -= cost;
                     }
                     if (selection == 2)
                     {
                         Instantiate(armory, centerPosition, armory.transform.rotation);
                         placedPositions.Add(cellPosition);
                         Global.armories += 1;
+                        Global.money -= cost;
                     }
                     else if (selection == 3)
                     {
                         Instantiate(factory, centerPosition, factory.transform.rotation);
                         placedPositions.Add(cellPosition);
                         Global.factories += 1;
+                        Global.money -= cost;
                     }
                     else if (selection == 4)
                     {
                         Instantiate(farm, centerPosition, farm.transform.rotation);
                         placedPositions.Add(cellPosition);
                         Global.farms += 1;
+                        Global.money -= cost;
                     }
                     else if (selection == 5)
                     {
                         Instantiate(market, centerPosition, market.transform.rotation);
                         placedPositions.Add(cellPosition);
                         Global.markets += 1;
+                        Global.money -= cost;
                     }
                     else if (selection == 6)
                     {
                         Instantiate(mine, centerPosition, mine.transform.rotation);
                         placedPositions.Add(cellPosition);
                         Global.mines += 1;
+                        Global.money -= cost;
                     }
                     
 
