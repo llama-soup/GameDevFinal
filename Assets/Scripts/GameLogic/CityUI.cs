@@ -41,5 +41,9 @@ public class CityUI : MonoBehaviour
 
     public void OnEndTurn(){
         Global.money += Global.moneyPerTurn;
+
+        //Each troop needs 1 food per turn maybe
+        //Global.cityFood += Global.foodPerTurn;
+        //Global.cityFood -= Global.troops;
     }
 }

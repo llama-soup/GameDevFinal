@@ -16,8 +16,9 @@ public static class Global
         
         public static int cityWealth;
         public static int cityFood;
-        public static float cityHappiness;
+        public static float cityHappiness = 50;
 
         public static int moneyPerTurn = 100;
+        public static int foodPerTurn = 5;
 
 }
