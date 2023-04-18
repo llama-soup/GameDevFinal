@@ -27,6 +27,7 @@ public class TileMapPlacement : MonoBehaviour
     private Camera mainCamera;
     private GameObject currentObject;
     private GameObject lastObjectPlaced;
+    private Vector3Int lastCellPosition;
     private float rotationAngle = 0f;
     private HashSet<Vector3Int> placedPositions = new HashSet<Vector3Int>(); // Keep track of the positions where objects have been placed
 
@@ -118,6 +119,7 @@ public class TileMapPlacement : MonoBehaviour
                     {
                         lastObjectPlaced = Instantiate(academy, centerPosition, academy.transform.rotation);
                         placedPositions.Add(cellPosition);
+                        lastCellPosition = cellPosition;
                         Global.academies += 1;
                         Global.money -= cost;
                         Global.cityHappiness += 10;
@@ -126,6 +128,7 @@ public class TileMapPlacement : MonoBehaviour
                     {
                         lastObjectPlaced = Instantiate(armory, centerPosition, armory.transform.rotation);
                         placedPositions.Add(cellPosition);
+                        lastCellPosition = cellPosition;
                         Global.armories += 1;
                         Global.money -= cost;
                         Global.troops += 2;
@@ -134,6 +137,7 @@ public class TileMapPlacement : MonoBehaviour
                     {
                         lastObjectPlaced = Instantiate(factory, centerPosition, factory.transform.rotation);
                         placedPositions.Add(cellPosition);
+                        lastCellPosition = cellPosition;
                         Global.factories += 1;
                         Global.money -= cost;
                         Global.moneyPerTurn += 10;
@@ -142,6 +146,7 @@ public class TileMapPlacement : MonoBehaviour
                     {
                         lastObjectPlaced = Instantiate(farm, centerPosition, farm.transform.rotation);
                         placedPositions.Add(cellPosition);
+                        lastCellPosition = cellPosition;
                         Global.farms += 1;
                         Global.money -= cost;
                         Global.foodPerTurn += 10;
@@ -151,6 +156,7 @@ public class TileMapPlacement : MonoBehaviour
                     {
                         lastObjectPlaced = Instantiate(market, centerPosition, market.transform.rotation);
                         placedPositions.Add(cellPosition);
+                        lastCellPosition = cellPosition;
                         Global.markets += 1;
                         Global.money -= cost;
                         Global.foodPerTurn += 10;
@@ -160,6 +166,7 @@ public class TileMapPlacement : MonoBehaviour
                     {
                         lastObjectPlaced = Instantiate(mine, centerPosition, mine.transform.rotation);
                         placedPositions.Add(cellPosition);
+                        lastCellPosition = cellPosition;
                         Global.mines += 1;
                         Global.money -= cost;
                     }
@@ -177,8 +184,11 @@ public class TileMapPlacement : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Z)){
-            Destroy(lastObjectPlaced);
-            Global.money += cost/2;
+            if(lastObjectPlaced){
+                Destroy(lastObjectPlaced);
+                placedPositions.Remove(lastCellPosition);
+                Global.money += cost/2;
+            }
         }
 
     }
