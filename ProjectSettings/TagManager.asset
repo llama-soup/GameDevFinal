@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Troop
   - Enemy
+  - plane
   layers:
   - Default
   - TransparentFX
