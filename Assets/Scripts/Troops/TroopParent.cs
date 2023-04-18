@@ -64,8 +64,6 @@ public class TroopParent : MonoBehaviour
         magicResistPercent = magicResistPerc;
         troopObject = troopToSet;
         movementSpeed = moveSpeed;
-        dealsMagicDamage = magicDamage;
-        attackDistance = attackDistanceToSet;
         attackSpeed = attackSpeedToSet;
 
     }
