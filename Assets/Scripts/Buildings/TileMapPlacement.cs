@@ -54,7 +54,8 @@ public class TileMapPlacement : MonoBehaviour
         {
             //hit.transform returns the transform of the object that is hit
             //If this is not tagged with "plane", then just return
-            Vector3Int hitInt = Vector3Int.FloorToInt(hit.point);
+            if (hit.transform.CompareTag("plane")){
+                Vector3Int hitInt = Vector3Int.FloorToInt(hit.point);
             Vector3Int cellPosition = tilemap.WorldToCell(hit.point);
             Vector3 centerPosition = tilemap.GetCellCenterWorld(cellPosition);
 
@@ -175,6 +176,7 @@ public class TileMapPlacement : MonoBehaviour
                     Destroy(currentObject); // Remove the transparent object
                     currentObject = null; // Reset the transparent object reference
                 }
+            }
             }
         }
         else
