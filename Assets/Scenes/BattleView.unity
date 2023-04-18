@@ -3026,7 +3026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6615145126035317646, guid: 7d58e025f5969314f9ff55d93be2a5fb, type: 3}
       propertyPath: attackDistance
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d58e025f5969314f9ff55d93be2a5fb, type: 3}
@@ -7306,6 +7306,10 @@ PrefabInstance:
     - target: {fileID: 2277802769476474834, guid: a80692ea5db6536488a2e11b93d9de97, type: 3}
       propertyPath: m_Name
       value: Melee Troop
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277802769476474835, guid: a80692ea5db6536488a2e11b93d9de97, type: 3}
+      propertyPath: health
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2277802769476474847, guid: a80692ea5db6536488a2e11b93d9de97, type: 3}
       propertyPath: m_RootOrder
