@@ -6,8 +6,8 @@ public class MeleeBasic : TroopParent
 
 {
 
-    public MeleeBasic(int healthToSet, int dmg, int armorToSet, bool isShielded, int chargeBonusToSet, float magicResistPerc, GameObject troopToSet, float moveSpeed)
-        : base(healthToSet,dmg,armorToSet,isShielded,chargeBonusToSet,magicResistPerc, troopToSet, moveSpeed)
+    public MeleeBasic(int healthToSet, int dmg, int armorToSet, bool isShielded, int chargeBonusToSet, float magicResistPerc, GameObject troopToSet, float moveSpeed, float attackSpeedToSet)
+        : base(healthToSet,dmg,armorToSet,isShielded,chargeBonusToSet,magicResistPerc, troopToSet, moveSpeed, attackSpeedToSet)
     {
         health = healthToSet;
         attackDamage = dmg;
@@ -17,7 +17,9 @@ public class MeleeBasic : TroopParent
         magicResistPercent = magicResistPerc;
         troopObject = troopToSet;
         movementSpeed = moveSpeed;
+        attackSpeed = attackSpeedToSet;
     }
+
 
     private void OnTriggerEnter(Collider other)
     {

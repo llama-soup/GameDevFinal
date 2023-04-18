@@ -7,6 +7,8 @@ public class CameraController : MonoBehaviour
 
     public Transform cameraTransform;
 
+    public Rigidbody rigidBodyRef;
+
     public float normalSpeed;
     public float fastSpeed;
 
