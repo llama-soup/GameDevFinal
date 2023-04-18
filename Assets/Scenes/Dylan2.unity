@@ -2642,10 +2642,10 @@ MonoBehaviour:
   transparentObject: {fileID: 1656287030372070176, guid: 9737ff8beac814e0987ca7b07bc0b651, type: 3}
   selection: 1
   academy_cost: 100
-  armory_cost: 200
-  factory_cost: 150
-  farm_cost: 100
-  market_cost: 100
+  armory_cost: 100
+  factory_cost: 200
+  farm_cost: 200
+  market_cost: 200
   mine_cost: 100
   cost: 100
 --- !u!114 &1990980472
@@ -3097,7 +3097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 449044651387435907, guid: 1968481abe2991f4ebd14a610243c1ca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 449044651540765005, guid: 1968481abe2991f4ebd14a610243c1ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3126,7 +3126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 98913140009696505, guid: 8756c82733e599c4789b6e62244e1509, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3151178283802010790, guid: 8756c82733e599c4789b6e62244e1509, type: 3}
       propertyPath: m_RootOrder
@@ -3300,7 +3300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4906389927223887505, guid: bc2f28df8ac616d4ea78c210ca407868, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4906389927223887518, guid: bc2f28df8ac616d4ea78c210ca407868, type: 3}
       propertyPath: m_RootOrder
@@ -3479,7 +3479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6838943716669750894, guid: 01f1875891d5cb947bb715ba611c35df, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6838943716669750895, guid: 01f1875891d5cb947bb715ba611c35df, type: 3}
       propertyPath: m_RootOrder
@@ -3812,7 +3812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7563037161350516299, guid: d92705a694ef42c4a94c0f178f44f434, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7563037161393974945, guid: d92705a694ef42c4a94c0f178f44f434, type: 3}
       propertyPath: m_LocalScale.z
@@ -3981,7 +3981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8408736506368035536, guid: 00efcd862e4a1204bb44b21f6b125653, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8408736506368035537, guid: 00efcd862e4a1204bb44b21f6b125653, type: 3}
       propertyPath: m_RootOrder
@@ -4042,7 +4042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5555588297584439073, guid: b7b3ae4bb03d6ab43bfb94d451b6828f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7346823786997191870, guid: b7b3ae4bb03d6ab43bfb94d451b6828f, type: 3}
       propertyPath: m_RootOrder

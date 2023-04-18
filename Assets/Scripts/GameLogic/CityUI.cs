@@ -22,12 +22,11 @@ public class CityUI : MonoBehaviour
     // Update is called once per frame
     void Update() {
         Global.cityWealth = Global.farms * 2000 + Global.markets * 6000;
-        Global.cityFood = Global.farms * 160 + Global.markets * 80;
-        Global.cityHappiness = Global.academies * 0.4f + Global.armories * -0.1f + Global.factories * -0.1f + Global.farms * 0.3f + Global.markets * 0.3f + Global.mines * -0.2f;
+        //Global.cityHappiness = Global.academies * 0.4f + Global.armories * -0.1f + Global.factories * -0.1f + Global.farms * 0.3f + Global.markets * 0.3f + Global.mines * -0.2f;
         //Global.money = Global.armories * 10 + Global.factories * 30 + Global.farms * 10 + Global.markets * 10 + Global.mines * 30;
         // TO DO: decrease food proportionate to population somehow
         // number of troops lost after being used in battle will be updated somewhere else
-        Global.troops = Global.armories * 8;
+        //Global.troops = Global.armories * 8;
         
         // or, do we subtract from wealth if we want the buildings to have maintenance costs
         // statsText.text = string.Format("Day: {0}   City Wealth: {1}   Food: {2}   Happiness: {3}", new object[4] {Global.cityWealth, Global.food, Global.factories});
@@ -37,13 +36,27 @@ public class CityUI : MonoBehaviour
         moneyText.text = string.Format("Player Money: {0}", Global.money);
         troopsText.text = string.Format("Player Troops: {0}", Global.troops);
 
+        if(Global.cityHappiness < 0){
+            Global.cityHappiness = 0;
+        }
+        if(Global.cityFood < 0){
+            Global.cityFood = 0;
+        }
     }
 
     public void OnEndTurn(){
         Global.money += Global.moneyPerTurn;
 
+        //Citizens grow more unhappy if the turn is ended with 0 food.
+        if(Global.cityFood <= 0){
+            Global.cityHappiness -= 5;
+        }
+
         //Each troop needs 1 food per turn maybe
-        //Global.cityFood += Global.foodPerTurn;
-        //Global.cityFood -= Global.troops;
+        Global.cityFood += Global.foodPerTurn;
+        Global.cityFood -= Global.troops;
+        
+        //Citizens grow more and more unhappy each turn
+        Global.cityHappiness -= 5;
     }
 }
