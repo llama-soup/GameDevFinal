@@ -815,6 +815,13 @@ MonoBehaviour:
   mine: {fileID: 5555588297584439073, guid: b7b3ae4bb03d6ab43bfb94d451b6828f, type: 3}
   transparentObject: {fileID: 1656287030372070176, guid: 9737ff8beac814e0987ca7b07bc0b651, type: 3}
   selection: 1
+  academy_cost: 100
+  armory_cost: 200
+  factory_cost: 150
+  farm_cost: 100
+  market_cost: 100
+  mine_cost: 100
+  cost: 100
 --- !u!114 &1990980472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1437,6 +1444,30 @@ PrefabInstance:
     - target: {fileID: 7003767407852811805, guid: b802a7681126d4251acaa77e1a3e107d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7003767409351342486, guid: b802a7681126d4251acaa77e1a3e107d, type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0.7058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 7003767409351342486, guid: b802a7681126d4251acaa77e1a3e107d, type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.7058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 7003767409351342486, guid: b802a7681126d4251acaa77e1a3e107d, type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.7058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 7003767409351342486, guid: b802a7681126d4251acaa77e1a3e107d, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.7075472
+      objectReference: {fileID: 0}
+    - target: {fileID: 7003767409351342486, guid: b802a7681126d4251acaa77e1a3e107d, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.7075472
+      objectReference: {fileID: 0}
+    - target: {fileID: 7003767409351342486, guid: b802a7681126d4251acaa77e1a3e107d, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.7075472
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b802a7681126d4251acaa77e1a3e107d, type: 3}

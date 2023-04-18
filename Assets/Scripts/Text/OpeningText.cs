@@ -33,7 +33,7 @@ public class OpeningText : MonoBehaviour
     }
         
 
-    public void OnContinueClick() {
+    public void OnTurnPageClick() {
         dialogueIndex++;
     }
 }
