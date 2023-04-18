@@ -79,17 +79,14 @@ public class EnemyMeleeBasic : MeleeBasic
                 {
                     isAttackingCurrently = false;
                 }
-                agent.SetDestination(attackingUnit.troopObject.transform.position);
+                if(isAttackingCurrently == false)
+                {
+                    agent.SetDestination(attackingUnit.troopObject.transform.position);
+                }
+                
 
                 //Once reached point of moveToPoint
                 float distanceToEnemy = Vector3.Distance(troopObject.transform.position, attackingUnit.troopObject.transform.position);
-                Debug.Log(attackDistance);
-                if (distanceToEnemy <= attackDistance)
-                {
-
-                    //This might call a bunch but once we get in the script we instantly check to see 
-                    AttackUnit(attackingUnit);
-                }
 
             }
             else

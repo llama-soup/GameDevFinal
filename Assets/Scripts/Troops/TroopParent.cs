@@ -21,7 +21,7 @@ public class TroopParent : MonoBehaviour
     public int chargeBonus;
     public float magicResistPercent;
     public float movementSpeed;
-    public float attackDistance = 5.0f;
+    public float attackDistance = 2.5f;
     public bool dealsMagicDamage = false;
     public float attackSpeed = 1.0f;
 
@@ -103,7 +103,8 @@ public class TroopParent : MonoBehaviour
             }
             else
             {
-                attackingUnit.health -= attackDamage * (attackingUnit.armor / 100);
+                attackingUnit.health -= Mathf.RoundToInt((float)attackDamage * ((float)attackingUnit.armor / 100.0f));
+
             }
 
             if (attackingUnit.health <= 0)
@@ -112,6 +113,7 @@ public class TroopParent : MonoBehaviour
             }
 
             yield return new WaitForSeconds(attackSpeed);
+            Debug.Log(attackSpeed);
 
             if(attackingUnit == null)
             {
@@ -154,33 +156,33 @@ public class TroopParent : MonoBehaviour
 
         if (attackingUnit != null && isAlive == true)
         {
-            agent.SetDestination(attackingUnit.transform.position);
-            Debug.Log("Moving to baddie");
+            
+            
+            if(isAttackingCurrently == false)
+            {
+                agent.SetDestination(attackingUnit.transform.position);
+            }
+            
+            
 
             // Attack Logic
 
-            if (attackingUnit != null)
+            float distToEnemy = Vector3.Distance(attackingUnit.troopObject.transform.position, troopObject.transform.position);
+
+            if (distToEnemy <= attackDistance)
             {
-
-                if (attackingUnit.isAlive == true)
+                Debug.Log("Attacking");
+                if (isAttackingCurrently == false)
                 {
-                    float distToEnemy = Vector3.Distance(attackingUnit.troopObject.transform.position, troopObject.transform.position);
-
-                    if (distToEnemy <= attackDistance)
-                    {
-                        Debug.Log("Attacking");
-                        if (isAttackingCurrently == false)
-                        {
-                            AttackUnit(attackingUnit);
-                        }
-                    }
-                    else
-                    {
-                        isAttackingCurrently = false;
-                    }
-                    agent.SetDestination(attackingUnit.troopObject.transform.position);
+                    AttackUnit(attackingUnit);
                 }
             }
+            else
+            {
+                isAttackingCurrently = false;
+            }
+            
+            
         }
 
 
@@ -211,11 +213,6 @@ public class TroopParent : MonoBehaviour
     {
         Debug.Log("I am dead.");
         Destroy(troopObject);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.gameObject);
     }
 
 

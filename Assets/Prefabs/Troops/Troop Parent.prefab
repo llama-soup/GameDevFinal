@@ -122,10 +122,15 @@ MonoBehaviour:
   chargeBonus: 5
   magicResistPercent: 5
   movementSpeed: 3.5
+  attackDistance: 2.5
+  dealsMagicDamage: 0
+  attackSpeed: 1
   isAlive: 1
   isEnemy: 0
+  isAttackingCurrently: 0
   troopObject: {fileID: 2277802769476474834}
   attackingUnit: {fileID: 0}
+  battleManagerRef: {fileID: 0}
 --- !u!195 &937244442
 NavMeshAgent:
   m_ObjectHideFlags: 0

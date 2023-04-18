@@ -157,7 +157,8 @@ MonoBehaviour:
   chargeBonus: 5
   magicResistPercent: 5
   movementSpeed: 3.5
-  attackDistance: 5
+  attackDistance: 2.5
+  dealsMagicDamage: 0
   attackSpeed: 1
   isAlive: 1
   isEnemy: 1
