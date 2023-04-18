@@ -58,5 +58,9 @@ public class CityUI : MonoBehaviour
         
         //Citizens grow more and more unhappy each turn
         Global.cityHappiness -= 5;
+
+        if (Global.cityHappiness <= 0){
+            Debug.Log("City happiness reached 0, BATTLE STARTED");
+        }
     }
 }
