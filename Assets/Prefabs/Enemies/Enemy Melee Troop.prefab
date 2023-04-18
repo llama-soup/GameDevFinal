@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6615145126035317646}
   m_Layer: 0
   m_Name: Enemy Melee Troop
-  m_TagString: Troop
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,8 +157,11 @@ MonoBehaviour:
   chargeBonus: 5
   magicResistPercent: 5
   movementSpeed: 3.5
+  attackDistance: 5
+  attackSpeed: 1
   isAlive: 1
   isEnemy: 1
+  isAttackingCurrently: 0
   troopObject: {fileID: 2277802769476474834}
   attackingUnit: {fileID: 0}
   battleManagerRef: {fileID: 0}

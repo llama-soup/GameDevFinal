@@ -23,6 +23,7 @@ public class TroopParent : MonoBehaviour
     public float movementSpeed;
     public float attackDistance = 5.0f;
     public bool dealsMagicDamage = false;
+    public float attackSpeed = 1.0f;
 
     public bool isAlive = true;
     public bool isEnemy = false;
@@ -38,7 +39,7 @@ public class TroopParent : MonoBehaviour
 
     bool inRangeOfEnemy;
 
-    private float attackSpeed = 1.0f;
+
 
     public TroopParent()
     {
@@ -53,7 +54,7 @@ public class TroopParent : MonoBehaviour
         attackDistance = 5.0f;
     }
 
-    public TroopParent(int healthToSet, int dmg, int armorToSet, bool isShielded, int chargeBonusToSet, float magicResistPerc, GameObject troopToSet, float moveSpeed, bool magicDamage, float attackDistanceToSet)
+    public TroopParent(int healthToSet, int dmg, int armorToSet, bool isShielded, int chargeBonusToSet, float magicResistPerc, GameObject troopToSet, float moveSpeed, float attackSpeedToSet)
     {
         health = healthToSet;
         attackDamage = dmg;
@@ -65,6 +66,7 @@ public class TroopParent : MonoBehaviour
         movementSpeed = moveSpeed;
         dealsMagicDamage = magicDamage;
         attackDistance = attackDistanceToSet;
+        attackSpeed = attackSpeedToSet;
 
     }
 
@@ -73,22 +75,25 @@ public class TroopParent : MonoBehaviour
     public void AttackUnit(TroopParent unitToAttack)
     {
 
-        if(isAttackingCurrently == false)
+        //Once reached point of moveToPoint
+        float distanceToEnemy = Vector3.Distance(troopObject.transform.position, unitToAttack.troopObject.transform.position);
+        if(distanceToEnemy <= attackDistance)
         {
-            //Once reached point of moveToPoint
-            attackingUnit = unitToAttack;
-            float distanceToEnemy = Vector3.Distance(troopObject.transform.position, unitToAttack.troopObject.transform.position);
-            if (distanceToEnemy <= attackDistance)
-            {
-                isAttackingCurrently = true;
-                StartCoroutine(damageEnemy());
-            }
+
+            isAttackingCurrently = true;
+            StartCoroutine(damageEnemy());
+        }
+        else
+        {
+            isAttackingCurrently = false;
+            StopCoroutine(damageEnemy());
         }
 
     }
 
-    IEnumerator damageEnemy()
+    public IEnumerator damageEnemy()
     {
+
 
         while(isAttackingCurrently)
         {
@@ -101,17 +106,29 @@ public class TroopParent : MonoBehaviour
             else
             {
                 attackingUnit.health -= attackDamage * (attackingUnit.armor / 100);
-                Debug.Log(attackingUnit.health);
+            }
+
+            if (attackingUnit.health <= 0)
+            {
+                attackingUnit.Die();
             }
 
             yield return new WaitForSeconds(attackSpeed);
 
-            float distanceToEnemy = Vector3.Distance(troopObject.transform.position, attackingUnit.troopObject.transform.position);
-            if (attackingUnit.isAlive == false || distanceToEnemy > attackDistance)
+            if(attackingUnit == null)
             {
                 isAttackingCurrently = false;
                 break;
             }
+            else
+            {
+                float distanceToEnemy = Vector3.Distance(troopObject.transform.position, attackingUnit.troopObject.transform.position);
+                if (attackingUnit.isAlive == false || distanceToEnemy > attackDistance)
+                {
+                    break;
+                }
+            }
+
         }
 
     }
@@ -136,13 +153,57 @@ public class TroopParent : MonoBehaviour
 
     private void Update()
     {
+
+        if (attackingUnit != null && isAlive == true)
+        {
+            agent.SetDestination(attackingUnit.transform.position);
+            Debug.Log("Moving to baddie");
+
+            // Attack Logic
+
+            if (attackingUnit != null)
+            {
+
+                if (attackingUnit.isAlive == true)
+                {
+                    float distToEnemy = Vector3.Distance(attackingUnit.troopObject.transform.position, troopObject.transform.position);
+
+                    if (distToEnemy <= attackDistance)
+                    {
+                        Debug.Log("Attacking");
+                        if (isAttackingCurrently == false)
+                        {
+                            AttackUnit(attackingUnit);
+                        }
+                    }
+                    else
+                    {
+                        isAttackingCurrently = false;
+                    }
+                    agent.SetDestination(attackingUnit.troopObject.transform.position);
+                }
+            }
+        }
+
+
+
+
         if (Input.GetMouseButtonDown(0))
         {
+
             Ray movePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(movePosition, out var hitInfo))
             {
 
-                agent.SetDestination(hitInfo.point); 
+                agent.SetDestination(hitInfo.point);
+
+                if(hitInfo.transform.gameObject.tag == "Enemy")
+                {
+                    Debug.Log("Just clicked on a baddie!");
+                    attackingUnit = hitInfo.transform.gameObject.GetComponent<TroopParent>();
+                }
+
+
             }
         }
     }

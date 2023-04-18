@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyMeleeBasic : MeleeBasic
 {
 
-    public EnemyMeleeBasic(int healthToSet, int dmg, int armorToSet, bool isShielded, int chargeBonusToSet, float magicResistPerc, GameObject troopToSet, float moveSpeed, bool magicDamage, float attackDistanceToSet)
-    : base(healthToSet, dmg, armorToSet, isShielded, chargeBonusToSet, magicResistPerc, troopToSet, moveSpeed, magicDamage, attackDistanceToSet)
+    public EnemyMeleeBasic(int healthToSet, int dmg, int armorToSet, bool isShielded, int chargeBonusToSet, float magicResistPerc, GameObject troopToSet, float moveSpeed, float attackSpeedToSet)
+    : base(healthToSet, dmg, armorToSet, isShielded, chargeBonusToSet, magicResistPerc, troopToSet, moveSpeed, attackSpeedToSet)
     {
         health = healthToSet;
         attackDamage = dmg;
@@ -16,7 +16,7 @@ public class EnemyMeleeBasic : MeleeBasic
         magicResistPercent = magicResistPerc;
         troopObject = troopToSet;
         movementSpeed = moveSpeed;
-        attackDistance = attackDistanceToSet;
+        attackSpeed = attackSpeedToSet;
     }
 
     void FindPlayerToAttack()
@@ -58,11 +58,6 @@ public class EnemyMeleeBasic : MeleeBasic
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.gameObject);
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -71,6 +66,19 @@ public class EnemyMeleeBasic : MeleeBasic
 
             if (attackingUnit.isAlive == true)
             {
+                float distToEnemy = Vector3.Distance(attackingUnit.troopObject.transform.position, troopObject.transform.position);
+
+                if (distToEnemy <= attackDistance)
+                {
+                    if(isAttackingCurrently == false)
+                    {
+                        AttackUnit(attackingUnit);
+                    }
+                }
+                else
+                {
+                    isAttackingCurrently = false;
+                }
                 agent.SetDestination(attackingUnit.troopObject.transform.position);
 
                 //Once reached point of moveToPoint
