@@ -16,10 +16,10 @@ public class TileMapPlacement : MonoBehaviour
     public int selection = 1;
 
     public int academy_cost = 100;
-    public int armory_cost = 200;
-    public int factory_cost = 150;
-    public int farm_cost = 100;
-    public int market_cost = 100;
+    public int armory_cost = 100;
+    public int factory_cost = 200;
+    public int farm_cost = 200;
+    public int market_cost = 200;
     public int mine_cost = 100;
 
     public int cost = 100;
@@ -35,6 +35,7 @@ public class TileMapPlacement : MonoBehaviour
         mainCamera = Camera.main;
         mainCamera.transform.LookAt(Vector3.zero);
         Global.money = 200;
+        Global.troops = 5;
     }
 
     private void Update()
@@ -118,6 +119,7 @@ public class TileMapPlacement : MonoBehaviour
                         placedPositions.Add(cellPosition);
                         Global.academies += 1;
                         Global.money -= cost;
+                        Global.cityHappiness += 10;
                     }
                     if (selection == 2)
                     {
@@ -125,6 +127,7 @@ public class TileMapPlacement : MonoBehaviour
                         placedPositions.Add(cellPosition);
                         Global.armories += 1;
                         Global.money -= cost;
+                        Global.troops += 2;
                     }
                     else if (selection == 3)
                     {
@@ -140,6 +143,8 @@ public class TileMapPlacement : MonoBehaviour
                         placedPositions.Add(cellPosition);
                         Global.farms += 1;
                         Global.money -= cost;
+                        Global.foodPerTurn += 10;
+                        Global.cityHappiness += 5;
                     }
                     else if (selection == 5)
                     {
@@ -147,6 +152,8 @@ public class TileMapPlacement : MonoBehaviour
                         placedPositions.Add(cellPosition);
                         Global.markets += 1;
                         Global.money -= cost;
+                        Global.foodPerTurn += 10;
+                        Global.cityHappiness += 10;
                     }
                     else if (selection == 6)
                     {
