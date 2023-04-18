@@ -107,3 +107,6 @@
 *.meta linguist-generated
 *.prefab linguist-generated
 *.unity linguist-generated
+
+#Adding Terrains to LFS; Yumna
+/Assets/Terrains/*.asset filter=lfs diff=lfs merge=lfs -text
