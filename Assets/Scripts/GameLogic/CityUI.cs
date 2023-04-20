@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CityUI : MonoBehaviour
 {
@@ -61,6 +62,7 @@ public class CityUI : MonoBehaviour
 
         if (Global.cityHappiness <= 0){
             Debug.Log("City happiness reached 0, BATTLE STARTED");
+            SceneManager.LoadScene("BattleView");
         }
     }
 }

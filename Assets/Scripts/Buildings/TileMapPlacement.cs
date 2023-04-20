@@ -28,7 +28,7 @@ public class TileMapPlacement : MonoBehaviour
     private GameObject currentObject;
     private GameObject lastObjectPlaced;
     private Vector3Int lastCellPosition;
-    private float rotationAngle = 0f;
+    //private float rotationAngle = 0f;
     private HashSet<Vector3Int> placedPositions = new HashSet<Vector3Int>(); // Keep track of the positions where objects have been placed
 
 
@@ -61,30 +61,30 @@ public class TileMapPlacement : MonoBehaviour
 
             currentObject.transform.position = centerPosition; // Move the transparent object to the cursor position
 
-            // Rotate the object to be placed based on input
-            //rotationAngle += Input.GetAxis("RotateObject") * 90f;
-            if (Input.GetKey(KeyCode.O))   
-            {
-                rotationAngle -= 90f * Time.deltaTime;
-                currentObject.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-                academy.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-                armory.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-                factory.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-                farm.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-                market.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-                mine.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-            }
-            if (Input.GetKey(KeyCode.P)) 
-            {
-                rotationAngle += 90f * Time.deltaTime;
-                currentObject.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-                academy.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-                armory.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-                factory.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-                farm.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-                market.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-                mine.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-            }
+            // // Rotate the object to be placed based on input
+            // //rotationAngle += Input.GetAxis("RotateObject") * 90f;
+            // if (Input.GetKey(KeyCode.O))   
+            // {
+            //     rotationAngle -= 90f * Time.deltaTime;
+            //     currentObject.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            //     academy.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            //     armory.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            //     factory.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            //     farm.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            //     market.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            //     mine.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            // }
+            // if (Input.GetKey(KeyCode.P)) 
+            // {
+            //     rotationAngle += 90f * Time.deltaTime;
+            //     currentObject.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            //     academy.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            //     armory.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            //     factory.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            //     farm.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            //     market.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            //     mine.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            // }
 
             if(Input.GetKeyDown("1")){
                 selection = 1;
