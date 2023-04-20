@@ -194,4 +194,23 @@ public class TileMapPlacement : MonoBehaviour
         }
 
     }
+
+    public void OnClickAcademy(){
+        selection = 1;
+    }
+    public void OnClickArmory(){
+        selection = 2;
+    }
+    public void OnClickFactory(){
+        selection = 3;
+    }
+    public void OnClickFarm(){
+        selection = 4;
+    }
+    public void OnClickMarket(){
+        selection = 5;
+    }
+    public void OnClickMine(){
+        selection = 6;
+    }
 }
