@@ -441,6 +441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: River
       objectReference: {fileID: 0}
+    - target: {fileID: 6505205938001371529, guid: f6d44e95f11dc0e40961be6070723f75, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6505205938001371533, guid: f6d44e95f11dc0e40961be6070723f75, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -545,6 +549,10 @@ PrefabInstance:
     - target: {fileID: 1161459424211055659, guid: 0d93340bf4b480348aaac7a5fba14762, type: 3}
       propertyPath: m_Name
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 1161459424211055659, guid: 0d93340bf4b480348aaac7a5fba14762, type: 3}
+      propertyPath: m_TagString
+      value: plane
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d93340bf4b480348aaac7a5fba14762, type: 3}
