@@ -19,6 +19,17 @@ public class EnemyMeleeBasic : MeleeBasic
         attackSpeed = attackSpeedToSet;
     }
 
+
+    IEnumerator FindNearbyTroopCoroutine()
+    {
+        while(isAlive == true)
+        {
+            FindPlayerToAttack();
+            yield return new WaitForSeconds(10.0f);
+        }
+
+    }
+
     void FindPlayerToAttack()
     {
 
@@ -52,7 +63,7 @@ public class EnemyMeleeBasic : MeleeBasic
 
         agent.speed = movementSpeed;
 
-        FindPlayerToAttack();
+        StartCoroutine(FindNearbyTroopCoroutine());
 
         attackSphere.radius = attackDistance;
 
