@@ -21,4 +21,6 @@ public static class Global
         public static int moneyPerTurn = 100;
         public static int foodPerTurn = 0;
 
+        public static int battleCounter = 0;
+
 }
