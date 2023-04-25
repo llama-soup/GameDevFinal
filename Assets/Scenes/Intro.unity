@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571336, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -404,6 +404,8 @@ MonoBehaviour:
     are stronger united than divided. May the blessings of the divine guide us and
     protect us in our quest for greatness. Long live the Kingdom of Drodemore and
     the Kingdom of Zoba!
+  continueButton: {fileID: 0}
+  turnPageButton: {fileID: 0}
 --- !u!114 &1724769934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +436,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3892344383585782937, guid: dddd7ca7edba543b48bf3b52aefefd50, type: 3}
+      propertyPath: m_fontSize
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892344383585782937, guid: dddd7ca7edba543b48bf3b52aefefd50, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892344383585782937, guid: dddd7ca7edba543b48bf3b52aefefd50, type: 3}
+      propertyPath: m_overflowMode
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3892344383640803565, guid: dddd7ca7edba543b48bf3b52aefefd50, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -442,6 +456,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1724769933}
+    - target: {fileID: 3892344384128449633, guid: dddd7ca7edba543b48bf3b52aefefd50, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892344384128449633, guid: dddd7ca7edba543b48bf3b52aefefd50, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3892344384257778295, guid: dddd7ca7edba543b48bf3b52aefefd50, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -541,6 +563,14 @@ PrefabInstance:
     - target: {fileID: 3892344384458794101, guid: dddd7ca7edba543b48bf3b52aefefd50, type: 3}
       propertyPath: m_Sprite
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892344384978364258, guid: dddd7ca7edba543b48bf3b52aefefd50, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892344384978364258, guid: dddd7ca7edba543b48bf3b52aefefd50, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dddd7ca7edba543b48bf3b52aefefd50, type: 3}
