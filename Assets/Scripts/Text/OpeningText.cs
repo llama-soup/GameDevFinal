@@ -10,8 +10,8 @@ public class OpeningText : MonoBehaviour
     public int dialogueIndex = 0;
 
     public string playerName = "PLAYER";
-    public string paragraph3 = "We cannot allow these traitors to continue unchecked. In exchange for your military assistance in suppressing these riots, you will be rewarded generously in gold. You can use that gold to invest in my kingdom and construct new buildings, which will also grant you money and other benefits.";
-    public string paragraph4 = "As we embark upon this journey together, let us remember that our nations are stronger united than divided. May the blessings of the divine guide us and protect us in our quest for greatness. Long live the Kingdom of Drodemore and the Kingdom of Zoba!";
+    private string paragraph3 = "We cannot allow these traitors to continue unchecked. In exchange for your military assistance in suppressing these riots, you will be rewarded generously in gold. You can use that gold to invest in my kingdom and construct new buildings, which will also grant you money and other benefits.";
+    private string paragraph4 = "As we embark upon this journey together, let us remember that our nations are stronger united than divided. May the blessings of the divine guide us and protect us in our quest for greatness. Long live the Kingdom of Drodemore and the Kingdom of Zoba!";
 
     public GameObject continueButton;
     public GameObject turnPageButton;
