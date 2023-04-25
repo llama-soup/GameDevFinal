@@ -60,8 +60,18 @@ public class CityUI : MonoBehaviour
         //Citizens grow more and more unhappy each turn
         Global.cityHappiness -= 5;
 
+        Global.battleCounter += 1;
+
         if (Global.cityHappiness <= 0){
             Debug.Log("City happiness reached 0, BATTLE STARTED");
+            Global.battleCounter = 0;
+            SceneManager.LoadScene("BattleView");
+        }
+
+
+        if (Global.battleCounter >= 6){
+            Debug.Log("Too many turns without Battle, BATTLE STARTED");
+            Global.battleCounter = 0;
             SceneManager.LoadScene("BattleView");
         }
     }
