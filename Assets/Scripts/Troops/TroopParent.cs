@@ -113,7 +113,6 @@ public class TroopParent : MonoBehaviour
             }
 
             yield return new WaitForSeconds(attackSpeed);
-            Debug.Log(attackSpeed);
 
             if(attackingUnit == null)
             {
@@ -171,10 +170,13 @@ public class TroopParent : MonoBehaviour
 
             if (distToEnemy <= attackDistance)
             {
-                Debug.Log("Attacking");
+
                 if (isAttackingCurrently == false)
                 {
+                    agent.SetDestination(troopObject.transform.position);
                     AttackUnit(attackingUnit);
+
+
                 }
             }
             else
@@ -182,13 +184,12 @@ public class TroopParent : MonoBehaviour
                 isAttackingCurrently = false;
             }
             
-            
         }
 
 
 
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && battleManagerRef.currentlySelectedTroop == this)
         {
 
             Ray movePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -199,7 +200,6 @@ public class TroopParent : MonoBehaviour
 
                 if(hitInfo.transform.gameObject.tag == "Enemy")
                 {
-                    Debug.Log("Just clicked on a baddie!");
                     attackingUnit = hitInfo.transform.gameObject.GetComponent<TroopParent>();
                 }
 

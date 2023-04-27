@@ -35,8 +35,22 @@ public class BattleManager : MonoBehaviour
 
     void allEnemyTroopsDead()
     {
+        Global.money -= 100;
+
 
     }
+
+    IEnumerator StartOfGameWait()
+    {
+
+
+
+        yield return new WaitForSeconds(15f);
+    }
+
+
+
+
 
 
     // Start is called before the first frame update

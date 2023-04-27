@@ -72,6 +72,8 @@ public class EnemyMeleeBasic : MeleeBasic
                 {
                     if(isAttackingCurrently == false)
                     {
+                        agent.SetDestination(troopObject.transform.position);
+
                         AttackUnit(attackingUnit);
                     }
                 }
@@ -95,6 +97,10 @@ public class EnemyMeleeBasic : MeleeBasic
             }
 
 
+        }
+        else
+        {
+            FindPlayerToAttack();
         }
 
         
