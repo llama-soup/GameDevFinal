@@ -23,4 +23,6 @@ public static class Global
 
         public static int battleCounter = 0;
 
+        public static string playerName;
+
 }
