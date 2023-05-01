@@ -213,6 +213,8 @@ public class TroopParent : MonoBehaviour
     {
         Debug.Log("I am dead.");
         Destroy(troopObject);
+
+        battleManagerRef.playerTroops.Remove(this);
     }
 
 
