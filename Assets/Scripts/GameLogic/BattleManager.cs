@@ -10,6 +10,8 @@ public class BattleManager : MonoBehaviour
 
     public TroopParent currentlySelectedTroop;
 
+    public bool isStartingPeriod = true;
+
 
     void changeCurrentSelectedTroop(TroopParent newSelectedTroop)
     {
@@ -46,6 +48,8 @@ public class BattleManager : MonoBehaviour
 
 
         yield return new WaitForSeconds(15f);
+
+        isStartingPeriod = false;
     }
 
 
@@ -57,7 +61,10 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         changeCurrentSelectedTroop(playerTroops[0]);
+        StartCoroutine(StartOfGameWait());
     }
+
+
 
     // Update is called once per frame
     void Update()

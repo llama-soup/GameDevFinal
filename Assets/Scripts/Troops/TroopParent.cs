@@ -35,6 +35,7 @@ public class TroopParent : MonoBehaviour
     public GameObject troopObject;
     public TroopParent attackingUnit;
     public BattleManager battleManagerRef;
+    public Animator animatorRef;
 
 
     bool inRangeOfEnemy;
@@ -75,15 +76,22 @@ public class TroopParent : MonoBehaviour
 
         //Once reached point of moveToPoint
         float distanceToEnemy = Vector3.Distance(troopObject.transform.position, unitToAttack.troopObject.transform.position);
-        if(distanceToEnemy <= attackDistance)
+        if(distanceToEnemy <= attackDistance && isAlive == true)
         {
 
             isAttackingCurrently = true;
+            if(animatorRef != null)
+            {
+                animatorRef.SetBool("IsAttacking", true);
+
+            }
+            
             StartCoroutine(damageEnemy());
         }
         else
         {
             isAttackingCurrently = false;
+            animatorRef.SetBool("IsAttacking", false);
             StopCoroutine(damageEnemy());
         }
 
@@ -95,38 +103,51 @@ public class TroopParent : MonoBehaviour
 
         while(isAttackingCurrently)
         {
- 
 
-            if(dealsMagicDamage == true)
+            if(isAlive == true)
             {
-                attackingUnit.health -= attackDamage * Mathf.RoundToInt((1f - ((float)attackingUnit.magicResistPercent / 100f)));
-            }
-            else
-            {
-                attackingUnit.health -= Mathf.RoundToInt((float)attackDamage * ((float)attackingUnit.armor / 100.0f));
 
-            }
-
-            if (attackingUnit.health <= 0)
-            {
-                attackingUnit.Die();
-            }
-
-            yield return new WaitForSeconds(attackSpeed);
-
-            if(attackingUnit == null)
-            {
-                isAttackingCurrently = false;
-                break;
-            }
-            else
-            {
-                float distanceToEnemy = Vector3.Distance(troopObject.transform.position, attackingUnit.troopObject.transform.position);
-                if (attackingUnit.isAlive == false || distanceToEnemy > attackDistance)
+                if (dealsMagicDamage == true)
                 {
+                    attackingUnit.health -= attackDamage * Mathf.RoundToInt((1f - ((float)attackingUnit.magicResistPercent / 100f)));
+                }
+                else
+                {
+                    attackingUnit.health -= Mathf.RoundToInt((float)attackDamage * ((float)attackingUnit.armor / 100.0f));
+
+                }
+
+                if (attackingUnit.health <= 0)
+                {
+                    attackingUnit.Die();
+                }
+
+                yield return new WaitForSeconds(attackSpeed);
+
+                if (attackingUnit == null)
+                {
+                    isAttackingCurrently = false;
+                    animatorRef.SetBool("IsAttacking", false);
                     break;
                 }
+                else
+                {
+                    float distanceToEnemy = Vector3.Distance(troopObject.transform.position, attackingUnit.troopObject.transform.position);
+                    if (attackingUnit.isAlive == false || distanceToEnemy > attackDistance)
+                    {
+                        break;
+                    }
+                }
+
+
             }
+            else
+            {
+                break;
+            }
+ 
+
+
 
         }
 
@@ -148,12 +169,35 @@ public class TroopParent : MonoBehaviour
 
         attackSphere.radius = attackDistance;
 
+        animatorRef = troopObject.GetComponentInChildren<Animator>(true);
+
     }
 
     private void Update()
     {
 
-        if (attackingUnit != null && isAlive == true)
+        //Communicating speed to Animator
+        if(agent.velocity != Vector3.zero)
+        {
+
+            if(animatorRef.GetBool("IsMoving") != true)
+            {
+                animatorRef.SetBool("IsMoving", true);
+            }
+        }
+        else
+        {
+            //If current speed is 0 and we're not already known stopped, then say we're stopped.
+            if (animatorRef.GetBool("IsMoving") != false)
+            {
+                animatorRef.SetBool("IsMoving", false);
+            }
+        }
+
+
+
+        // Attacking Logic
+        if (attackingUnit != null && attackingUnit.isAlive == true && isAlive == true)
         {
             
             
@@ -162,9 +206,6 @@ public class TroopParent : MonoBehaviour
                 agent.SetDestination(attackingUnit.transform.position);
             }
             
-            
-
-            // Attack Logic
 
             float distToEnemy = Vector3.Distance(attackingUnit.troopObject.transform.position, troopObject.transform.position);
 
@@ -173,7 +214,8 @@ public class TroopParent : MonoBehaviour
 
                 if (isAttackingCurrently == false)
                 {
-                    agent.SetDestination(troopObject.transform.position);
+                    agent.isStopped = true;
+
                     AttackUnit(attackingUnit);
 
 
@@ -182,14 +224,21 @@ public class TroopParent : MonoBehaviour
             else
             {
                 isAttackingCurrently = false;
+                animatorRef.SetBool("IsAttacking", false);
             }
             
         }
+        else
+        {
+            isAttackingCurrently = false;
+            animatorRef.SetBool("IsAttacking", false);
+            agent.isStopped = false;
+        }
 
 
+        //Troop Movement Mechanics
 
-
-        if (Input.GetMouseButtonDown(0) && battleManagerRef.currentlySelectedTroop == this)
+        if (Input.GetMouseButtonDown(0) && battleManagerRef.currentlySelectedTroop == this && battleManagerRef.isStartingPeriod == false)
         {
 
             Ray movePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -211,12 +260,26 @@ public class TroopParent : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("I am dead.");
-        Destroy(troopObject);
+        if(isAlive == true)
+        {
+            agent.speed = 0;
+            isAlive = false;
+            Debug.Log("I am dead.");
 
-        battleManagerRef.playerTroops.Remove(this);
+            animatorRef.SetBool("IsDead", true);
+
+            StartCoroutine(DeathCoroutine());
+
+            battleManagerRef.playerTroops.Remove(this);
+        }
+
     }
 
+    IEnumerator DeathCoroutine()
+    {
+        yield return new WaitForSeconds(5f);
 
+        Destroy(troopObject);
+    }
 
 }

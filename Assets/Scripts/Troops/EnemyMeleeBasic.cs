@@ -49,19 +49,42 @@ public class EnemyMeleeBasic : MeleeBasic
     void Start()
     {
         battleManagerRef = GameObject.Find("BattleManagerObject").GetComponent<BattleManager>();
+        animatorRef = troopObject.GetComponentInChildren<Animator>(true);
 
         agent.speed = movementSpeed;
 
-        FindPlayerToAttack();
-
         attackSphere.radius = attackDistance;
+
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(attackingUnit != null)
+
+
+        //Communicating speed to Animator
+        if (agent.velocity != Vector3.zero)
+        {
+
+            if (animatorRef.GetBool("IsMoving") != true)
+            {
+                animatorRef.SetBool("IsMoving", true);
+            }
+        }
+        else
+        {
+            //If current speed is 0 and we're not already known stopped, then say we're stopped.
+            if (animatorRef.GetBool("IsMoving") != false)
+            {
+                animatorRef.SetBool("IsMoving", false);
+            }
+        }
+
+
+        // Attack Logic
+        if (attackingUnit != null)
         {
 
             if (attackingUnit.isAlive == true)
@@ -100,7 +123,11 @@ public class EnemyMeleeBasic : MeleeBasic
         }
         else
         {
-            FindPlayerToAttack();
+            if(battleManagerRef.isStartingPeriod == false)
+            {
+                FindPlayerToAttack();
+            }
+            
         }
 
         
