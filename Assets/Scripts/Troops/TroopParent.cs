@@ -269,8 +269,26 @@ public class TroopParent : MonoBehaviour
             animatorRef.SetBool("IsDead", true);
 
             StartCoroutine(DeathCoroutine());
+            if(troopObject.tag == "Enemy")
+            {
+                battleManagerRef.enemyTroops.Remove(this);
+                if(battleManagerRef.enemyTroops.Count == 0)
+                {
+                    //Do if we have killed all enemy troops!
+                    battleManagerRef.allEnemyTroopsDead();
+                }
+            }
+            else
+            {
+                battleManagerRef.playerTroops.Remove(this);
+                if(battleManagerRef.playerTroops.Count == 0)
+                {
+                    //Do if we have lost all of our troops!
+                    battleManagerRef.allFriendlyTroopsDead();
+                }
+            }
+            
 
-            battleManagerRef.playerTroops.Remove(this);
         }
 
     }

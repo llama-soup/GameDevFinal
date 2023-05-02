@@ -321,6 +321,10 @@ PrefabInstance:
       value: PT_Male_Peasant_01
       objectReference: {fileID: 0}
     - target: {fileID: 8299208155895968176, guid: a0cb3b35b5fb2564983f2275ffa69733, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c5723b793df94804a9dccdae6fabba2c, type: 2}
+    - target: {fileID: 8299208155895968176, guid: a0cb3b35b5fb2564983f2275ffa69733, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}

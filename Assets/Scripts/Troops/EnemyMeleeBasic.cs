@@ -19,6 +19,29 @@ public class EnemyMeleeBasic : MeleeBasic
         attackSpeed = attackSpeedToSet;
     }
 
+    IEnumerator checkNearbyPlayerTroops()
+    {
+
+            while (battleManagerRef.playerTroops.Count > 0)
+            {
+
+                yield return new WaitForSeconds(3.5f);
+
+                if(battleManagerRef.isStartingPeriod == false)
+            {
+                FindPlayerToAttack();
+                Debug.Log("Finding Nearby Troop!");
+            }
+
+
+            }
+
+
+
+    }
+
+
+
     void FindPlayerToAttack()
     {
 
@@ -42,8 +65,8 @@ public class EnemyMeleeBasic : MeleeBasic
             Debug.Log("Warning: No enemies found to attack!");
         }
     }
-        
-    
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +77,8 @@ public class EnemyMeleeBasic : MeleeBasic
         agent.speed = movementSpeed;
 
         attackSphere.radius = attackDistance;
+
+        StartCoroutine(checkNearbyPlayerTroops());
 
 
 
