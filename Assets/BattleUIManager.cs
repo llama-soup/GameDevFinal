@@ -12,6 +12,14 @@ public class BattleUIManager : MonoBehaviour
     TextMeshProUGUI healthTextRef;
     public GameObject inCombatObjRef;
 
+
+    public GameObject endOfGamePanelRef;
+    public GameObject winTextRef;
+    public GameObject loseTextRef;
+    public TextMeshProUGUI goldEarnedTextRef;
+
+    public GameObject warmupPanelRef;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -153,7 +153,7 @@ MonoBehaviour:
   agent: {fileID: 937244442}
   attackSphere: {fileID: 1909670983031065488}
   health: 100
-  attackDamage: 8
+  attackDamage: 5
   armor: 30
   hasShield: 0
   chargeBonus: 5
