@@ -12,7 +12,7 @@ public static class Global
         public static int mines;
 
         public static int money;
-        public static int troops = 4;
+        public static int troops = 3;
         
         public static int cityWealth;
         public static int cityFood;
