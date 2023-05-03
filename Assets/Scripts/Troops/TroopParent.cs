@@ -145,6 +145,8 @@ public class TroopParent : MonoBehaviour
             }
             else
             {
+                attackingUnit = null;
+                isAttackingCurrently = false;
                 break;
             }
         }
@@ -207,6 +209,8 @@ public class TroopParent : MonoBehaviour
             if (distToEnemy <= attackDistance)
             {
 
+                Debug.Log("We're in attack distance!!!!");
+
                 if (isAttackingCurrently == false)
                 {
                     agent.isStopped = true;
@@ -220,6 +224,7 @@ public class TroopParent : MonoBehaviour
             {
                 isAttackingCurrently = false;
                 animatorRef.SetBool("IsAttacking", false);
+                StopCoroutine(damageEnemy());
             }
             
         }
@@ -228,6 +233,7 @@ public class TroopParent : MonoBehaviour
             isAttackingCurrently = false;
             animatorRef.SetBool("IsAttacking", false);
             agent.isStopped = false;
+            StopCoroutine(damageEnemy());
         }
 
 
@@ -257,6 +263,9 @@ public class TroopParent : MonoBehaviour
     {
         if(isAlive == true)
         {
+
+            StopCoroutine(damageEnemy());
+
             agent.speed = 0;
             isAlive = false;
             Debug.Log("I am dead.");
@@ -283,7 +292,7 @@ public class TroopParent : MonoBehaviour
                 }
             }
             
-            if(battleManagerRef.playerTroops.Count > 0)
+            if(battleManagerRef.playerTroops.Count > 0 && this.tag != "Enemy")
             {
                 battleManagerRef.changeCurrentSelectedTroop(battleManagerRef.playerTroops[0]);
             }
@@ -294,7 +303,7 @@ public class TroopParent : MonoBehaviour
 
     IEnumerator DeathCoroutine()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
 
         Destroy(troopObject);
     }
