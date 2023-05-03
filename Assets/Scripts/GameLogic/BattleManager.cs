@@ -53,8 +53,6 @@ public class BattleManager : MonoBehaviour
         int moneyToGive = Random.Range(100, 250);
         Global.money += moneyToGive;
 
-        Debug.Log(Global.money);
-
         Global.troops = playerTroops.Count;
 
         UIReference.endOfGamePanelRef.SetActive(true);
@@ -102,16 +100,7 @@ public class BattleManager : MonoBehaviour
 
 
         //Spawn Enemy Troops According to troops Global variable + 1 or - 1
-        int numEnemyTroopsToSpawn;
-
-        if(playerTroops.Count == 1)
-        {
-            numEnemyTroopsToSpawn = 1;
-        }
-        else
-        {
-            numEnemyTroopsToSpawn = playerTroops.Count;
-        }
+        int numEnemyTroopsToSpawn = Random.Range(Global.troops - 1, Global.troops + 1);
 
         for (int i = 0; i < numEnemyTroopsToSpawn; i++)
         {
