@@ -79,6 +79,8 @@ public class BattleManager : MonoBehaviour
             Quaternion rotationToSpawnAt = friendlySpawnPointRef.spawnPoints[i].transform.rotation;
 
             playerTroops.Add(Instantiate(troopToSpawn, positionToSpawnAt, rotationToSpawnAt).GetComponent<TroopParent>());
+            playerTroops[i].armor += Global.armorToBuff;
+            playerTroops[i].attackDamage += Global.attackDamageToBuff;
         }
 
 
@@ -105,6 +107,28 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if(playerTroops.IndexOf(currentlySelectedTroop) == 0)
+            {
+                changeCurrentSelectedTroop(playerTroops[playerTroops.Count - 1]);
+            }
+            else
+            {
+                changeCurrentSelectedTroop(playerTroops[playerTroops.IndexOf(currentlySelectedTroop) - 1]);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (playerTroops.IndexOf(currentlySelectedTroop) == playerTroops.Count-1)
+            {
+                changeCurrentSelectedTroop(playerTroops[0]);
+            }
+            else
+            {
+                changeCurrentSelectedTroop(playerTroops[playerTroops.IndexOf(currentlySelectedTroop) + 1]);
+            }
+        }
     }
 }

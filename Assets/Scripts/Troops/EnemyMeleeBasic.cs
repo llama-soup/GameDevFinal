@@ -30,7 +30,6 @@ public class EnemyMeleeBasic : MeleeBasic
                 if(battleManagerRef.isStartingPeriod == false)
             {
                 FindPlayerToAttack();
-                Debug.Log("Finding Nearby Troop!");
             }
 
 

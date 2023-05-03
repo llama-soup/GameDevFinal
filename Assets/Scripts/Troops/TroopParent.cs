@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class TroopParent : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class TroopParent : MonoBehaviour
     public float attackDistance = 2.5f;
     public bool dealsMagicDamage = false;
     public float attackSpeed = 1.0f;
+    public int maxHealth = 100;
 
     public bool isAlive = true;
     public bool isEnemy = false;
@@ -37,6 +39,8 @@ public class TroopParent : MonoBehaviour
     public BattleManager battleManagerRef;
     public Animator animatorRef;
 
+    [SerializeField]
+    private Bar healthBarScriptRef;
 
     bool inRangeOfEnemy;
 
@@ -138,19 +142,12 @@ public class TroopParent : MonoBehaviour
                         break;
                     }
                 }
-
-
             }
             else
             {
                 break;
             }
- 
-
-
-
         }
-
     }
 
     void Start()
@@ -171,10 +168,14 @@ public class TroopParent : MonoBehaviour
 
         animatorRef = troopObject.GetComponentInChildren<Animator>(true);
 
+        healthBarScriptRef = troopObject.GetComponentInChildren<Bar>(true);
+
     }
 
     private void Update()
     {
+        //Update Health every tick
+        healthBarScriptRef.UpdateWidth(health);
 
         //Communicating speed to Animator
         if(agent.velocity != Vector3.zero)
@@ -199,12 +200,6 @@ public class TroopParent : MonoBehaviour
         // Attacking Logic
         if (attackingUnit != null && attackingUnit.isAlive == true && isAlive == true)
         {
-            
-            
-            if(isAttackingCurrently == false)
-            {
-                agent.SetDestination(attackingUnit.transform.position);
-            }
             
 
             float distToEnemy = Vector3.Distance(attackingUnit.troopObject.transform.position, troopObject.transform.position);
