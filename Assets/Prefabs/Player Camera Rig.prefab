@@ -55,6 +55,13 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0, z: 0}
   newRotation: {x: 0, y: 0, z: 0, w: 0}
   newZoom: {x: 0, y: 0, z: 0}
+  xLeftBound: -100
+  xRightBound: 30
+  zBottomBound: -50
+  zTopBound: 70
+  maxZoom: 45
+  minZoom: 80
+  battleManagerRef: {fileID: 0}
 --- !u!1 &5381016443264584863
 GameObject:
   m_ObjectHideFlags: 0

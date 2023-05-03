@@ -12,7 +12,7 @@ public static class Global
         public static int mines;
 
         public static int money;
-        public static int troops;
+        public static int troops = 4;
         
         public static int cityWealth;
         public static int cityFood;
@@ -24,5 +24,8 @@ public static class Global
         public static int battleCounter = 0;
 
         public static string playerName;
+
+        public static int armorToBuff = 0;
+        public static int attackDamageToBuff = 0;
 
 }

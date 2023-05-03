@@ -19,16 +19,27 @@ public class EnemyMeleeBasic : MeleeBasic
         attackSpeed = attackSpeedToSet;
     }
 
-
-    IEnumerator FindNearbyTroopCoroutine()
+    IEnumerator checkNearbyPlayerTroops()
     {
-        while(isAlive == true)
-        {
-            FindPlayerToAttack();
-            yield return new WaitForSeconds(10.0f);
-        }
+
+            while (battleManagerRef.playerTroops.Count > 0)
+            {
+
+                yield return new WaitForSeconds(3.5f);
+
+                if(battleManagerRef.isStartingPeriod == false)
+            {
+                FindPlayerToAttack();
+            }
+
+
+            }
+
+
 
     }
+
+
 
     void FindPlayerToAttack()
     {
@@ -53,26 +64,51 @@ public class EnemyMeleeBasic : MeleeBasic
             Debug.Log("Warning: No enemies found to attack!");
         }
     }
-        
-    
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         battleManagerRef = GameObject.Find("BattleManagerObject").GetComponent<BattleManager>();
+        animatorRef = troopObject.GetComponentInChildren<Animator>(true);
 
         agent.speed = movementSpeed;
 
-        StartCoroutine(FindNearbyTroopCoroutine());
-
         attackSphere.radius = attackDistance;
+
+        StartCoroutine(checkNearbyPlayerTroops());
+
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(attackingUnit != null)
+
+
+        //Communicating speed to Animator
+        if (agent.velocity != Vector3.zero)
+        {
+
+            if (animatorRef.GetBool("IsMoving") != true)
+            {
+                animatorRef.SetBool("IsMoving", true);
+            }
+        }
+        else
+        {
+            //If current speed is 0 and we're not already known stopped, then say we're stopped.
+            if (animatorRef.GetBool("IsMoving") != false)
+            {
+                animatorRef.SetBool("IsMoving", false);
+            }
+        }
+
+
+        // Attack Logic
+        if (attackingUnit != null)
         {
 
             if (attackingUnit.isAlive == true)
@@ -83,6 +119,8 @@ public class EnemyMeleeBasic : MeleeBasic
                 {
                     if(isAttackingCurrently == false)
                     {
+                        agent.SetDestination(troopObject.transform.position);
+
                         AttackUnit(attackingUnit);
                     }
                 }
@@ -106,6 +144,14 @@ public class EnemyMeleeBasic : MeleeBasic
             }
 
 
+        }
+        else
+        {
+            if(battleManagerRef.isStartingPeriod == false)
+            {
+                FindPlayerToAttack();
+            }
+            
         }
 
         
