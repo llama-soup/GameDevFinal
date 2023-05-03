@@ -214,4 +214,8 @@ public class TileMapPlacement : MonoBehaviour
     public void OnClickMine(){
         selection = 6;
     }
+
+    public void OnLoseBattle(){
+        Global.troops = 1;
+    }
 }
