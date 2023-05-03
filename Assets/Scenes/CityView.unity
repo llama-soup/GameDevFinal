@@ -3061,6 +3061,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Camera Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 5381016441989663639, guid: fb1204e2e09be6d40bac0932d2ed7201, type: 3}
+      propertyPath: minZoom
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 5381016443264584861, guid: fb1204e2e09be6d40bac0932d2ed7201, type: 3}
       propertyPath: m_ClearFlags
       value: 1

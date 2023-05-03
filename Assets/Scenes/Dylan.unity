@@ -2577,10 +2577,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1990980471}
+    - target: {fileID: 4787943290414896166, guid: f045dcf6c1f3d435292cb8ef812989d4, type: 3}
+      propertyPath: tipToShow
+      value: 'Factory: +10 Money Per Turn'
+      objectReference: {fileID: 0}
     - target: {fileID: 4787943290414896187, guid: f045dcf6c1f3d435292cb8ef812989d4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1990980471}
+    - target: {fileID: 4787943290488213024, guid: f045dcf6c1f3d435292cb8ef812989d4, type: 3}
+      propertyPath: tipToShow
+      value: 'Academy:     +10 Happiness'
+      objectReference: {fileID: 0}
     - target: {fileID: 4787943290488213029, guid: f045dcf6c1f3d435292cb8ef812989d4, type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
       value: 0.3207547
@@ -2597,6 +2605,34 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1990980471}
+    - target: {fileID: 4787943290792428835, guid: f045dcf6c1f3d435292cb8ef812989d4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787943290792428835, guid: f045dcf6c1f3d435292cb8ef812989d4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787943290792428844, guid: f045dcf6c1f3d435292cb8ef812989d4, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787943290792428844, guid: f045dcf6c1f3d435292cb8ef812989d4, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 59853f41169b24588b5cdc71985c8d5b, type: 2}
+    - target: {fileID: 4787943290792428844, guid: f045dcf6c1f3d435292cb8ef812989d4, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787943290792428844, guid: f045dcf6c1f3d435292cb8ef812989d4, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3167542749513762299, guid: 59853f41169b24588b5cdc71985c8d5b, type: 2}
+    - target: {fileID: 4787943291756524569, guid: f045dcf6c1f3d435292cb8ef812989d4, type: 3}
+      propertyPath: tipToShow
+      value: 'Armory:       +2 troops'
+      objectReference: {fileID: 0}
     - target: {fileID: 4787943291756524574, guid: f045dcf6c1f3d435292cb8ef812989d4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
