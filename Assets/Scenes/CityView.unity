@@ -2217,6 +2217,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: KeycodesUICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2159596038391696572, guid: e2328628ea5a843d0a2d712724de7ad1, type: 3}
+      propertyPath: tipToShow
+      value: 'Armory:        +2 troops'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159596038432407485, guid: e2328628ea5a843d0a2d712724de7ad1, type: 3}
+      propertyPath: tipToShow
+      value: 'Farm:          +10 Food per turn       +5 Happiness'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159596038459139652, guid: e2328628ea5a843d0a2d712724de7ad1, type: 3}
+      propertyPath: tipToShow
+      value: 'Market:          +5 Food per turn      +10 Happiness'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159596039118159399, guid: e2328628ea5a843d0a2d712724de7ad1, type: 3}
+      propertyPath: tipToShow
+      value: 'Mine:         +10 Troop Armor'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159596039195339907, guid: e2328628ea5a843d0a2d712724de7ad1, type: 3}
+      propertyPath: tipToShow
+      value: 'Factory:        +10 money per turn'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159596039239300741, guid: e2328628ea5a843d0a2d712724de7ad1, type: 3}
+      propertyPath: tipToShow
+      value: 'Academy:        +10 Happiness'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159596039606435209, guid: e2328628ea5a843d0a2d712724de7ad1, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159596039606435209, guid: e2328628ea5a843d0a2d712724de7ad1, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 59853f41169b24588b5cdc71985c8d5b, type: 2}
+    - target: {fileID: 2159596039606435209, guid: e2328628ea5a843d0a2d712724de7ad1, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2159596039606435209, guid: e2328628ea5a843d0a2d712724de7ad1, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3167542749513762299, guid: 59853f41169b24588b5cdc71985c8d5b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2328628ea5a843d0a2d712724de7ad1, type: 3}
 --- !u!1001 &899494580
