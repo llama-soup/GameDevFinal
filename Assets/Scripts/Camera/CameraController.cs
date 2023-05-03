@@ -38,7 +38,12 @@ public class CameraController : MonoBehaviour
         newRotation = transform.rotation;
         newZoom = cameraTransform.localPosition;
 
-        battleManagerRef = GameObject.Find("BattleManagerObject").GetComponent<BattleManager>();
+
+        if(GameObject.Find("BattleManagerObject") != null)
+        {
+            battleManagerRef = GameObject.Find("BattleManagerObject").GetComponent<BattleManager>();
+        }
+        
     }
 
     // Update is called once per frame
@@ -50,20 +55,22 @@ public class CameraController : MonoBehaviour
 
     void HandleMovement()
     {
-        //Handle Zoom to Unit
-        if (Input.GetKey(KeyCode.F)){
-            if(battleManagerRef.currentlySelectedTroop != null)
+        if(battleManagerRef != null){
+            //Handle Zoom to Unit
+            if (Input.GetKey(KeyCode.F))
             {
-                Vector3 pointToTravelTo = new Vector3(battleManagerRef.currentlySelectedTroop.transform.position.x,
-                    battleManagerRef.currentlySelectedTroop.transform.position.y - 33f, battleManagerRef.currentlySelectedTroop.transform.position.z + 33f);
+                if (battleManagerRef.currentlySelectedTroop != null)
+                {
+                    Vector3 pointToTravelTo = new Vector3(battleManagerRef.currentlySelectedTroop.transform.position.x,
+                        battleManagerRef.currentlySelectedTroop.transform.position.y - 33f, battleManagerRef.currentlySelectedTroop.transform.position.z + 33f);
 
 
-                newPosition = pointToTravelTo;
-
-
-                newZoom = new Vector3(newZoom.x, 50f, -50f);
+                    newPosition = pointToTravelTo;
+                    newZoom = new Vector3(newZoom.x, 50f, -50f);
+                }
             }
         }
+
 
         //Camera Position Management
 
