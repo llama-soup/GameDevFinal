@@ -160,7 +160,7 @@ public class TileMapPlacement : MonoBehaviour
                         lastCellPosition = cellPosition;
                         Global.markets += 1;
                         Global.money -= cost;
-                        Global.foodPerTurn += 10;
+                        Global.foodPerTurn += 5;
                         Global.cityHappiness += 10;
                     }
                     else if (selection == 6)
@@ -170,6 +170,7 @@ public class TileMapPlacement : MonoBehaviour
                         lastCellPosition = cellPosition;
                         Global.mines += 1;
                         Global.money -= cost;
+                        Global.armorToBuff += 10;
                     }
                     
 
