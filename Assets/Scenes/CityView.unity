@@ -4975,13 +4975,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPCResidence
       objectReference: {fileID: 0}
+    - target: {fileID: 4401360229675627762, guid: 8d3d2d76b49a34f638184b0e2a0ec299, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4401360229675627763, guid: 8d3d2d76b49a34f638184b0e2a0ec299, type: 3}
       propertyPath: m_RootOrder
       value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4401360229675627763, guid: 8d3d2d76b49a34f638184b0e2a0ec299, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401360229675627763, guid: 8d3d2d76b49a34f638184b0e2a0ec299, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401360229675627763, guid: 8d3d2d76b49a34f638184b0e2a0ec299, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4401360229675627763, guid: 8d3d2d76b49a34f638184b0e2a0ec299, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 130.3
       objectReference: {fileID: 0}
     - target: {fileID: 4401360229675627763, guid: 8d3d2d76b49a34f638184b0e2a0ec299, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5075,6 +5091,10 @@ PrefabInstance:
     - target: {fileID: 5381016441989663625, guid: fb1204e2e09be6d40bac0932d2ed7201, type: 3}
       propertyPath: m_Name
       value: Player Camera Rig
+      objectReference: {fileID: 0}
+    - target: {fileID: 5381016441989663639, guid: fb1204e2e09be6d40bac0932d2ed7201, type: 3}
+      propertyPath: minZoom
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5381016443264584861, guid: fb1204e2e09be6d40bac0932d2ed7201, type: 3}
       propertyPath: m_ClearFlags
