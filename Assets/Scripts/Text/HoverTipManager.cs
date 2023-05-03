@@ -6,6 +6,7 @@ using TMPro;
 
 public class HoverTipManager : MonoBehaviour
 {
+
     public TextMeshProUGUI tipText;
     public RectTransform tipWindow;
 
