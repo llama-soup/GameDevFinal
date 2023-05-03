@@ -79,6 +79,8 @@ public class EnemyMeleeBasic : MeleeBasic
 
         StartCoroutine(checkNearbyPlayerTroops());
 
+        healthBarScriptRef = troopObject.GetComponentInChildren<Bar>(true);
+
 
 
     }
@@ -87,6 +89,7 @@ public class EnemyMeleeBasic : MeleeBasic
     void Update()
     {
 
+        healthBarScriptRef.UpdateWidth(health);
 
         //Communicating speed to Animator
         if (agent.velocity != Vector3.zero)

@@ -40,7 +40,7 @@ public class TroopParent : MonoBehaviour
     public Animator animatorRef;
 
     [SerializeField]
-    private Bar healthBarScriptRef;
+    public Bar healthBarScriptRef;
 
     bool inRangeOfEnemy;
 
@@ -117,7 +117,7 @@ public class TroopParent : MonoBehaviour
                 }
                 else
                 {
-                    attackingUnit.health -= Mathf.RoundToInt((float)attackDamage * ((float)attackingUnit.armor / 100.0f));
+                    attackingUnit.health -= Mathf.RoundToInt((float)attackDamage * (1f - ((float)attackingUnit.armor / 100.0f)));
 
                 }
 
@@ -283,6 +283,10 @@ public class TroopParent : MonoBehaviour
                 }
             }
             
+            if(battleManagerRef.playerTroops.Count > 0)
+            {
+                battleManagerRef.changeCurrentSelectedTroop(battleManagerRef.playerTroops[0]);
+            }
 
         }
 

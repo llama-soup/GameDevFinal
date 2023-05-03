@@ -15,8 +15,10 @@ public class BattleManager : MonoBehaviour
     public GameObject troopToSpawn;
     public GameObject enemyTroopToSpawn;
 
+    public BattleUIManager UIReference;
 
-    void changeCurrentSelectedTroop(TroopParent newSelectedTroop)
+
+    public void changeCurrentSelectedTroop(TroopParent newSelectedTroop)
     {
         Material currentTroopMat;
         if(currentlySelectedTroop != null)
@@ -38,6 +40,10 @@ public class BattleManager : MonoBehaviour
         //Calls when all player troops are dead and we've lost the battle
 
         Global.troops = 1;
+
+        UIReference.endOfGamePanelRef.SetActive(true);
+        UIReference.winTextRef.SetActive(false);
+        UIReference.loseTextRef.SetActive(true);
     }
 
     public void allEnemyTroopsDead()
@@ -49,6 +55,11 @@ public class BattleManager : MonoBehaviour
 
         Global.troops = playerTroops.Count;
 
+        UIReference.endOfGamePanelRef.SetActive(true);
+        UIReference.winTextRef.SetActive(true);
+        UIReference.loseTextRef.SetActive(false);
+        UIReference.goldEarnedTextRef.text = "Gold Earned: " + moneyToGive.ToString();
+
 
     }
 
@@ -58,6 +69,7 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSeconds(15f);
 
         isStartingPeriod = false;
+        UIReference.warmupPanelRef.SetActive(false);
     }
 
 
@@ -68,6 +80,9 @@ public class BattleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        UIReference = GameObject.Find("BattleViewUI").GetComponent<BattleUIManager>();
+
         SpawnPointController friendlySpawnPointRef = GameObject.Find("FriendlySpawnPoints").GetComponent<SpawnPointController>();
         SpawnPointController enemySpawnPointRef = GameObject.Find("EnemySpawnPoints").GetComponent<SpawnPointController>();
 
@@ -109,26 +124,39 @@ public class BattleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if(playerTroops.IndexOf(currentlySelectedTroop) == 0)
+
+            if(playerTroops.Count > 0)
             {
-                changeCurrentSelectedTroop(playerTroops[playerTroops.Count - 1]);
+                if (playerTroops.IndexOf(currentlySelectedTroop) == 0)
+                {
+                    changeCurrentSelectedTroop(playerTroops[playerTroops.Count - 1]);
+                }
+                else
+                {
+                    changeCurrentSelectedTroop(playerTroops[playerTroops.IndexOf(currentlySelectedTroop) - 1]);
+                }
             }
-            else
-            {
-                changeCurrentSelectedTroop(playerTroops[playerTroops.IndexOf(currentlySelectedTroop) - 1]);
-            }
+
+
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (playerTroops.IndexOf(currentlySelectedTroop) == playerTroops.Count-1)
+            if(playerTroops.Count > 0)
             {
-                changeCurrentSelectedTroop(playerTroops[0]);
+                if (playerTroops.IndexOf(currentlySelectedTroop) == playerTroops.Count - 1)
+                {
+                    changeCurrentSelectedTroop(playerTroops[0]);
+                }
+                else
+                {
+                    changeCurrentSelectedTroop(playerTroops[playerTroops.IndexOf(currentlySelectedTroop) + 1]);
+                }
             }
-            else
-            {
-                changeCurrentSelectedTroop(playerTroops[playerTroops.IndexOf(currentlySelectedTroop) + 1]);
-            }
+
+
         }
+
+
     }
 }
