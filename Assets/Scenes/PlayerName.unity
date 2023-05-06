@@ -584,8 +584,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have a letter from King Edmund Hamlin XVII of the Zoba Kingdom. To
-    whom should he address it?
+  m_text: You have a letter from King Edmund Hamlin XVII of the Drodemore Kingdom.
+    To whom should he address it?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 59853f41169b24588b5cdc71985c8d5b, type: 2}
   m_sharedMaterial: {fileID: 3167542749513762299, guid: 59853f41169b24588b5cdc71985c8d5b, type: 2}

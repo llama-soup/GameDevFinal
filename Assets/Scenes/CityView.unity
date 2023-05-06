@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7390268, g: 0.43944666, b: 0.23707335, a: 1}
+  m_IndirectSpecularColor: {r: 0.73462117, g: 0.43935087, b: 0.24187498, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4386,6 +4386,25 @@ PrefabInstance:
     - target: {fileID: 8617688441937464924, guid: aa00d49e4563749b585aabb31ac9c6f0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: HidePopUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617688442434630393, guid: aa00d49e4563749b585aabb31ac9c6f0, type: 3}
+      propertyPath: m_text
+      value: "Welcome to City View! Here you can build different kinds of buildings
+        with the gold you earn from quelling uprisings. Each building has a unique
+        effect on the city\u2019s happiness, wealth, and food, along with your own
+        money and number of troops. Hover over the buttons at the top of the screen
+        to see information about each building. When city happiness gets too low,
+        an uprising will break out.\n\nUse the arrow keys or WASD to move the camera
+        around. Take note of the Player Money in the lower left corner to make sure
+        you have sufficient funds to build.\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617688442434630393, guid: aa00d49e4563749b585aabb31ac9c6f0, type: 3}
+      propertyPath: m_fontSize
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617688442434630393, guid: aa00d49e4563749b585aabb31ac9c6f0, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa00d49e4563749b585aabb31ac9c6f0, type: 3}
