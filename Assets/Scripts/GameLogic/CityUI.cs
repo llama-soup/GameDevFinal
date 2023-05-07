@@ -15,9 +15,12 @@ public class CityUI : MonoBehaviour
     public TextMeshProUGUI troopsText;
 
     public static CityUI inst;
-
+    //to add sound effects for building placements
+    public AudioSource audioSourceBP;
+    public AudioSource audioSourceLU;
     void Awake() {
         inst = this;
+        //audioSourceLU = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -46,6 +49,9 @@ public class CityUI : MonoBehaviour
     }
 
     public void OnEndTurn(){
+
+        audioSourceLU.Play();
+
         Global.money += Global.moneyPerTurn;
 
         //Citizens grow more unhappy if the turn is ended with 0 food.

@@ -25,6 +25,9 @@ public class TileMapPlacement : MonoBehaviour
 
     public int cost = 100;
 
+    //to add sound effects for building placements
+    public AudioSource audioSourceBP;
+    public AudioSource audioSourceLU;
     private Camera mainCamera;
     private GameObject currentObject;
     private GameObject lastObjectPlaced;
@@ -32,13 +35,13 @@ public class TileMapPlacement : MonoBehaviour
     //private float rotationAngle = 0f;
     private HashSet<Vector3Int> placedPositions = new HashSet<Vector3Int>(); // Keep track of the positions where objects have been placed
 
-
     private void Start()
     {
         mainCamera = Camera.main;
         mainCamera.transform.LookAt(Vector3.zero);
         Global.money = 200;
         Global.troops = 5;
+        audioSourceBP = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -68,6 +71,7 @@ public class TileMapPlacement : MonoBehaviour
                 if(Input.GetKeyDown("1")){
                     selection = 1;
                     cost = academy_cost;
+             
                 }
                 if(Input.GetKeyDown("2")){
                     selection = 2;
@@ -95,6 +99,7 @@ public class TileMapPlacement : MonoBehaviour
                     // Check if there is already an object placed on the tilemap at the current position
                     if (!placedPositions.Contains(cellPosition) && cost <= Global.money)
                     {
+                        audioSourceBP.Play(); //play sound
                         if (selection == 1)
                         {
                             lastObjectPlaced = Instantiate(academy, centerPosition, academy.transform.rotation);
@@ -103,6 +108,7 @@ public class TileMapPlacement : MonoBehaviour
                             Global.academies += 1;
                             Global.money -= cost;
                             Global.cityHappiness += 10;
+                            //audioSource.Play(); //play sound
                         }
                         if (selection == 2)
                         {
@@ -131,7 +137,8 @@ public class TileMapPlacement : MonoBehaviour
                             Global.money -= cost;
                             Global.foodPerTurn += 10;
                             Global.cityHappiness += 5;
-                        }
+                            //audioSource.Play(); //play sound
+                            }
                         else if (selection == 5)
                         {
                             lastObjectPlaced = Instantiate(market, centerPosition, market.transform.rotation);
